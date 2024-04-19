@@ -81,7 +81,7 @@ const CreatePost = () => {
       <div className="flex justify-center items-center min-h-screen px-4">
         <div className="flex flex-col items-center py-10 sm:justify-center w-full">
           <div className="w-full px-6 py-6  bg-white dark:bg-gray-900 shadow-md rounded-md sm:rounded-lg max-w-3xl">
-            <h1 className="font-bold md:text-2xl text-xl mb-8 mx-auto text-center">
+            <h1 className="font-bold md:text-2xl text-xl mb-8 mx-auto text-center text-purple-700">
               Create Post
             </h1>
             <form action="" onSubmit={handleRegistration} className="group">
@@ -97,7 +97,7 @@ const CreatePost = () => {
                     type="text"
                     name="title"
                     placeholder="Enter a title"
-                    className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-purple-500 focus:border-purple-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-purple-500 dark:focus:border-purple-500 placeholder-gray-300"
+                    className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-purple-500 focus:border-purple-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600  placeholder-gray-400"
                     required
                     value={data.title}
                     onChange={(e) => {
@@ -148,7 +148,7 @@ const CreatePost = () => {
                   />
                   <div
                     onClick={addCategory}
-                    className="bg-black text-white px-4 py-2 font-semibold cursor-pointer rounded-lg"
+                    className="text-white px-4 py-2 font-semibold cursor-pointer rounded-lg bg-purple-700 hover:bg-purple-600"
                   >
                     Add
                   </div>

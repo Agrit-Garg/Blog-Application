@@ -1,7 +1,16 @@
-import React, { useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { ImCross } from "react-icons/im";
+import { useParams } from "react-router-dom";
+import axios from 'axios';
+import { URL } from "../url.js";
+import { UserContext } from "../context/UserContext.jsx";
+import { useNavigate } from "react-router-dom";
 
 const EditPost = () => {
+    const postID = useParams().id
+    const {user} = useContext(UserContext)
+    const navigate= useNavigate();
+    
     const [data, setData] = useState({
         title: "",
         desc: "",
@@ -13,7 +22,7 @@ const EditPost = () => {
     
       const deleteCategory = (i) => {
         let updatedCats = [...cats];
-        updatedCats.splice(i);
+        updatedCats.splice(i,1);
         setCats(updatedCats);
       };
     
@@ -23,6 +32,26 @@ const EditPost = () => {
         setCat("");
         setCats(updatedCats);
       };
+
+     const fetchPost = async () => {
+    try {
+      const res = await axios.get(URL + "/api/post/" + postID);
+      console.log(res.data);
+      setData({
+        ...data,
+        title: res.data.title,
+        desc: res.data.desc,
+        file: res.data.photo, 
+      });
+      setCats(res.data.category);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+      useEffect(()=>{
+        fetchPost()
+      },[postID])
     
       const handleFileChange = (e) => {
         const file = e.target.files[0]; // Get the file from the input
@@ -32,18 +61,51 @@ const EditPost = () => {
         });
       };
     
-      const handleRegistration = (e) => {
+      const handleRegistration = async(e) => {
         e.preventDefault();
-    
-        console.log(data);
-        console.log(cats);
+        
+        const post = {
+          title:data.title,
+          desc:data.desc,
+          username:user.username,
+          uid:user._id,
+          category:cats,
+        }
+        
+        if(data.file){
+          const info = new FormData();  
+          const filename=Date.now()+data.file.name
+          info.append("img",filename)
+          info.append("file",data.file)
+          post.photo=filename
+          // console.log(info)
+          // console.log(post);
+          // img upload
+          try{
+            const imgUpload=await axios.post(URL+"/api/upload",info)
+            console.log(imgUpload.data)
+          }
+          catch(err){
+            console.log(err)
+          }
+        }
+        //post upload
+        try{
+          const res=await axios.put(URL+"/api/post/"+postID,post,{withCredentials:true})
+          navigate("/posts/post/"+res.data._id)
+          console.log(res.data)
+      
+        }
+        catch(err){
+          console.log(err)
+        }
       };
   return (
     <>
       <div className="flex justify-center items-center min-h-screen px-4">
         <div className="flex flex-col items-center py-10 sm:justify-center w-full">
           <div className="w-full px-6 py-6  bg-white dark:bg-gray-900 shadow-md rounded-md sm:rounded-lg max-w-3xl">
-            <h1 className="font-bold md:text-2xl text-xl mb-8 mx-auto text-center">
+            <h1 className="font-bold md:text-2xl text-xl mb-8 mx-auto text-center text-purple-700">
               Update Post
             </h1>
             <form action="" onSubmit={handleRegistration} className="group">
@@ -110,7 +172,7 @@ const EditPost = () => {
                   />
                   <div
                     onClick={addCategory}
-                    className="bg-black text-white px-4 py-2 font-semibold cursor-pointer rounded-lg"
+                    className="text-white px-4 py-2 font-semibold cursor-pointer rounded-lg bg-purple-700 hover:bg-purple-600"
                   >
                     Add
                   </div>
@@ -126,7 +188,7 @@ const EditPost = () => {
                       <p>{c}</p>
                       <p
                         onClick={() => deleteCategory(i)}
-                        className="text-white bg-black rounded-full cursor-pointer p-1 text-sm"
+                        className="text-white rounded-full bg-black hover:bg-gray-800 cursor-pointer p-1 text-[11px]"
                       >
                         <ImCross />
                       </p>

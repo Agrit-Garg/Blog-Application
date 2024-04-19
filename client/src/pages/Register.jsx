@@ -35,7 +35,7 @@ const Register = () => {
     <div className="flex justify-center items-center min-h-screen px-4">
       <div className="flex flex-col items-center py-10 sm:justify-center w-full">
         <div className="w-full px-6 py-6  bg-white dark:bg-gray-900 shadow-md rounded-md sm:rounded-lg max-w-sm">
-          <h1 className="font-bold md:text-2xl text-xl mb-2 mx-auto text-center">
+          <h1 className="font-bold md:text-2xl text-xl mb-2 mx-auto text-center text-purple-700" >
             Sign UP
           </h1>
           {error && (

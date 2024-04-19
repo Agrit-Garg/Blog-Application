@@ -16,17 +16,17 @@ const HomePosts = ({ post }) => {
       </div>
       {/* right */}
       <div className="flex-col w-[65%]">
-        <h1 className="text-xl font-bold md:mb-2 mb-1 md:text-2xl">
+        <h1 className="text-xl font-bold md:mb-2 mb-1 md:text-2xl text-white" >
           {post.title}
         </h1>
-        <div className="flex mb-2 text-sm font-semibold text-gray-500 items-center justify-between md:mb-4">
+        <div className="flex mb-2 text-sm font-semibold text-gray-400 items-center justify-between md:mb-4">
           <p>@{post.username}</p>
           <div className="flex space-x-2">
             <p>{new Date(post.updatedAt).toString().slice(0, 15)}</p>
             <p>{new Date(post.updatedAt).toString().slice(16, 24)}</p>
           </div>
         </div>
-        <p className="text-sm">{post.desc.slice(0, 200) + " .....read more"}</p>
+        <p className="text-sm text-white">{post.desc.slice(0, 200) + " .....read more"}</p>
       </div>
     </div>
     // </Link>
