@@ -4,7 +4,7 @@ import {IF} from '../url';
 
 const HomePosts = ({ post }) => {
   return (
-    // <Link to="/posts/post/" className="no-underline text-inherit">
+    
     <div className="w-full flex mt-8 space-x-4">
       {/* Left */}
       <div className="w-[35%] h-[200px] flex justify-center items-center">
@@ -23,13 +23,13 @@ const HomePosts = ({ post }) => {
           <p>@{post.username}</p>
           <div className="flex space-x-2">
             <p>{new Date(post.updatedAt).toString().slice(0, 15)}</p>
-            <p>{new Date(post.updatedAt).toString().slice(16, 24)}</p>
+            <p className="hidden md:visible">{new Date(post.updatedAt).toString().slice(16, 24)}</p>
           </div>
         </div>
         <p className="text-sm text-white">{post.desc.slice(0, 200) + " .....read more"}</p>
       </div>
     </div>
-    // </Link>
+ 
   );
 };
 

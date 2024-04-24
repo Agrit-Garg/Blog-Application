@@ -46,7 +46,7 @@ const Home = () => {
          </Link>
          )
       ) : 
-        <h3 className="text-center font-bold mt-20 text-2xl">
+        <h3 className="text-center font-bold mt-20 text-2xl text-white">
           No Post Available
         </h3>
       }
