@@ -30,6 +30,20 @@ This project showcases a full-stack blog application that allows users to regist
 - **Database**:
   - [MongoDB](https://www.mongodb.com/): A general-purpose, document-based NoSQL database.
 
+ ### Screenshots
+ -Below are some screenshots of the website.
+
+![Home Page](https://github.com/Agrit-Garg/Blog-Application/blob/master/images_for_readme/home.jpg?raw=true)
+
+![Post Detail Page](https://github.com/Agrit-Garg/Blog-Application/blob/master/images_for_readme/postDetail.png?raw=true)
+
+![Registeration Page](https://github.com/Agrit-Garg/Blog-Application/blob/master/images_for_readme/register.jpg?raw=true)
+
+
+
+
+
+
 
 
 
