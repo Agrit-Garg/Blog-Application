@@ -9,7 +9,7 @@ This project showcases a full-stack blog application that allows users to regist
 - **User Registration**: Users can create accounts to access the platform.
 - **Create and Edit Posts**: Users can write and modify their blog posts.
 - **Browse and Read Posts**: Users can explore and read posts from others.
-- **Delete Posts**: Users can delete their own posts.
+- **Delete Posts**: Users can delete their posts.
 - **Comment on Posts**: Users can leave comments on any post.
 - **Search Functionality**: Users can search for posts based on keywords.
   
